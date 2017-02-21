@@ -19,7 +19,7 @@ class RSprite(pygame.sprite.Sprite):
 		self.change_x = 5
 	
 	def jump(self):
-		self.change_y = 10
+		self.change_y = -10
 	
 	def run_stop(self):
 		self.change_x = 0;
@@ -35,7 +35,7 @@ class RSprite(pygame.sprite.Sprite):
 		print self.rect.y
 		
 	def calculate_gravity(self):
-		self.change_y -= 1
+		self.change_y += 1
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
