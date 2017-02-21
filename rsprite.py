@@ -34,7 +34,7 @@ class RSprite(pygame.sprite.Sprite):
 			self.change_y = 0
 		
 	def calculate_gravity(self):
-		self.change_y = self.change_y * 0.37
+		self.change_y = self.change_y * 0.01
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
@@ -48,7 +48,7 @@ all_sprites.add(player)
 running = True
 
 while running:
-	is_running = False
+	player_is_walking = False
 	for event in pygame.event.get():
 		if event.type == KEYDOWN:
 			if event.key == K_ESCAPE:
@@ -57,14 +57,14 @@ while running:
 				player.jump()
 			elif event.key == K_LEFT:
 				player.go_left()
-				is_running = True
+				player_is_walking = True
 			elif event.key == K_RIGHT:
 				player.go_right()
-				is_running = True
+				player_is_walking = True
 				
 		elif event.type == QUIT:
 			running = False
-	if not is_running:
+	if not player_is_walking:
 		player.run_stop()
 			
 	screen.blit(background, (0, 0))
