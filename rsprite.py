@@ -8,16 +8,33 @@ class RSprite(pygame.sprite.Sprite):
 		self.surf = pygame.Surface((75, 25))
 		self.surf.fill((255, 255, 255))
 		self.rect = self.surf.get_rect()
+		self.change_x = 0
+		self.change_y = 0
 	
-	def update(self, pressed_keys):
-		if pressed_keys[K_UP]:
-			self.rect.move_ip(0, -1)
-		if pressed_keys[K_DOWN]:
-			self.rect.move_ip(0, 1)
-		if pressed_keys[K_LEFT]:
-			self.rect.move_ip(-1, 0)
-		if pressed_keys[K_RIGHT]:
-			self.rect.move_ip(1, 0)
+	
+	def go_left(self):
+		self.change_x = -5
+		
+	def go_right(self):
+		self.change_x = 5
+	
+	def jump(self):
+		self.change_y = 10
+	
+	def run_stop(self):
+		self.change_x = 0;
+	
+	def update(self):
+		self.calculate_gravity()
+		self.rect.x += self.change_x
+		if self.rect.y < 500:
+			self.rect.y += self.change_y
+		else
+			self.rect.y = 500
+			self.change_y = 0
+		
+	def calculate_gravity(self):
+		self.change_y = self.change_y * 0.37
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
@@ -35,11 +52,18 @@ while running:
 		if event.type == KEYDOWN:
 			if event.key == K_ESCAPE:
 				running = False
+			elif event.key == K_UP:
+				player.jump()
+			elif event.key == K_LEFT:
+				player.go_left()
+			elif event.key == K_RIGHT:
+				player.go_right()
+				
 		elif event.type == QUIT:
 			running = False
+			
 	screen.blit(background, (0, 0))
-	pressed_keys = pygame.key.get_pressed()
-	player.update(pressed_keys)
+	player.update()
 	for item in all_sprites:
 		screen.blit(item.surf, item.rect)
 	pygame.display.flip()
