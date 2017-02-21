@@ -41,5 +41,5 @@ while running:
 	pressed_keys = pygame.key.get_pressed()
 	player.update(pressed_keys)
 	for item in all_sprites:
-		screen.blit(item.surf, entity.rect)
+		screen.blit(item.surf, item.rect)
 	pygame.display.flip()
