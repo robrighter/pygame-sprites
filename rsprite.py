@@ -32,9 +32,10 @@ class RSprite(pygame.sprite.Sprite):
 		else:
 			self.rect.y = 500
 			self.change_y = 0
+		print self.rect.y
 		
 	def calculate_gravity(self):
-		self.change_y = self.change_y - 1
+		self.change_y -= 1
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
