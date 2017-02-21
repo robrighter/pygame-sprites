@@ -19,7 +19,7 @@ class RSprite(pygame.sprite.Sprite):
 		self.change_x = 5
 	
 	def jump(self):
-		self.change_y = -50
+		self.change_y = -15
 	
 	def run_stop(self):
 		self.change_x = 0;
