@@ -35,8 +35,9 @@ class RSprite(pygame.sprite.Sprite):
 		if self.rect.y < 500:
 			self.change_y += 1
 		else:
+			if self.change_y > 0:
+				self.change_y = 0
 			self.rect.y = 500
-			self.change_y = 0
 
 pygame.init()
 clock = pygame.time.Clock()
