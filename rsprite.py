@@ -29,7 +29,7 @@ class RSprite(pygame.sprite.Sprite):
 		self.rect.x += self.change_x
 		if self.rect.y < 500:
 			self.rect.y += self.change_y
-		else
+		else:
 			self.rect.y = 500
 			self.change_y = 0
 		
