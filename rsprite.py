@@ -19,7 +19,8 @@ class RSprite(pygame.sprite.Sprite):
 		self.change_x = 5
 	
 	def jump(self):
-		self.change_y = -2000
+		print "JUMPING"
+		self.change_y = -200
 	
 	def run_stop(self):
 		self.change_x = 0;
@@ -27,7 +28,7 @@ class RSprite(pygame.sprite.Sprite):
 	def update(self):
 		self.calculate_gravity()
 		self.rect.x += self.change_x
-		if self.rect.y < 500:
+		if self.rect.y <= 500:
 			self.rect.y += self.change_y
 		else:
 			self.rect.y = 500
