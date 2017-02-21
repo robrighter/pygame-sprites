@@ -25,6 +25,9 @@ background = pygame.Surface(screen.get_size())
 background.fill((0, 0, 0))
 player = RSprite()
 
+all_sprites = pygame.sprite.Group()
+all_sprites.add(player)
+
 running = True
 
 while running:
@@ -37,5 +40,6 @@ while running:
 	screen.blit(background, (0, 0))
 	pressed_keys = pygame.key.get_pressed()
 	player.update(pressed_keys)
-	screen.blit(player.surf, (400, 300))
+	for item in all_sprites:
+		screen.blit(item.surf, entity.rect)
 	pygame.display.flip()
