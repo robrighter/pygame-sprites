@@ -21,6 +21,8 @@ class RSprite(pygame.sprite.Sprite):
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
+background = pygame.Surface(screen.get_size())
+background.fill((0, 0, 0))
 player = RSprite()
 
 running = True
@@ -32,5 +34,8 @@ while running:
 				running = False
 		elif event.type == QUIT:
 			running = False
+	screen.blit(background, (0, 0))
+	pressed_keys = pygame.key.get_pressed()
+	player.update(pressed_keys)
 	screen.blit(player.surf, (400, 300))
 	pygame.display.flip()
