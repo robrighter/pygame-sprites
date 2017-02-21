@@ -48,6 +48,7 @@ all_sprites.add(player)
 running = True
 
 while running:
+	is_running = False
 	for event in pygame.event.get():
 		if event.type == KEYDOWN:
 			if event.key == K_ESCAPE:
@@ -56,11 +57,15 @@ while running:
 				player.jump()
 			elif event.key == K_LEFT:
 				player.go_left()
+				is_running = True
 			elif event.key == K_RIGHT:
 				player.go_right()
+				is_running = True
 				
 		elif event.type == QUIT:
 			running = False
+	if !is_running:
+		player.run_stop()
 			
 	screen.blit(background, (0, 0))
 	player.update()
