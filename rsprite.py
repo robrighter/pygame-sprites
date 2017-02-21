@@ -38,6 +38,7 @@ class RSprite(pygame.sprite.Sprite):
 		self.change_y += 1
 
 pygame.init()
+clock = pygame.time.Clock()
 screen = pygame.display.set_mode((800, 600))
 background = pygame.Surface(screen.get_size())
 background.fill((0, 0, 0))
@@ -72,4 +73,5 @@ while running:
 	player.update()
 	for item in all_sprites:
 		screen.blit(item.surf, item.rect)
+	clock.tick(60)
 	pygame.display.flip()
