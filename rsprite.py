@@ -19,7 +19,7 @@ class RSprite(pygame.sprite.Sprite):
 		self.change_x = 5
 	
 	def jump(self):
-		self.change_y = -15
+		self.change_y = -10
 	
 	def run_stop(self):
 		self.change_x = 0;
@@ -35,7 +35,7 @@ class RSprite(pygame.sprite.Sprite):
 		if self.rect.y < 500:
 			self.change_y += 1
 		else:
-			self.rect.y = 499
+			self.rect.y = 500
 			self.change_y = 0
 
 pygame.init()
