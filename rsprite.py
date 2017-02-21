@@ -64,7 +64,7 @@ while running:
 				
 		elif event.type == QUIT:
 			running = False
-	if !is_running:
+	if not is_running:
 		player.run_stop()
 			
 	screen.blit(background, (0, 0))
